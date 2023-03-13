@@ -1,1 +1,15 @@
-
+from itertools import combinations
+ 
+n,m = map(int,input().split()) 
+prefer = [list(map(int,input().split())) for i in range(N)] 
+result = 0
+ 
+for combi in combinations(range(M),3): 
+    satisfy_sum = 0                           
+    for r in range(n):                
+        p = 0
+        for idx in combi:
+            p = max(p,prefer[r][idx])     
+        satisfy_sum += p                      
+    result = max(result,satisfy_sum)          
+print(result)
