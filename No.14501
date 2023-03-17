@@ -1,1 +1,21 @@
+date = int(input())
+t = []
+p = []
+max_gain = []
 
+for _ in range(date):
+  ti, pi = map(int, input().split())
+  t.append(ti)
+  p.append(pi)
+
+for _ in range(date + 1):
+  max_gain.append(0)
+
+for i in range(date-1, -1, -1):
+  if t[i] + i > date:
+    max_gain[i] = max_gain[i+1]
+  
+  else:
+    max_gain[i] = max(max_gain[i+1], max_gain[t[i]+i] + p[i])
+
+print(max_gain[0])
