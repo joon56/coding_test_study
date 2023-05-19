@@ -1,0 +1,32 @@
+#include<stdio.h>
+
+int tower[500001];
+int result[500001];
+
+int main()
+{
+    int num;
+	tower[0] = 100000001;
+
+	scanf("%d", &num);
+
+	for (int i = 1; i <= num; i++)
+		scanf("%d", &tower[i]);
+	
+
+	for (int i = 1; i <= num; i++)
+	{
+		for (int j = i - 1; j >= 0;)
+		{
+			if (tower[j] >= tower[i])
+			{
+				printf("%d ", j);
+				result[i] = j;
+				break;
+			}
+			else
+				j = result[j];
+		}
+	}
+	return 0;
+}
